@@ -1,7 +1,3 @@
-/* ==================== CHRISTMAS WISHLIST STYLES ==================== */
-/* CSS Stylesheet for Responsive Christmas Wishlist Project */
-
-/* ==================== CSS RESET & BASE STYLES ==================== */
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +5,7 @@
 }
 
 body {
-    font-family: 'Georgia', serif;
+    font-family: 'Papyrus', serif;
     line-height: 1.6;
     color: #2C3E50;
     background-color: #F8F9FA;
@@ -31,48 +27,29 @@ ul {
 }
 
 /* ==================== COLOR VARIABLES ==================== */
-/* TODO: These CSS custom properties store the Christmas color scheme */
-/* You can customize these colors to match your theme */
 :root {
     --christmas-red: #C41E3A;
     --christmas-green: #165B33;
-    --christmas-gold: #FFD700;
+    --christmas-gold: #fdd700b7;
     --snow-white: #FFFFFF;
     --dark-text: #2C3E50;
     --light-bg: #F8F9FA;
 }
 
 /* ==================== NAVIGATION BAR STYLES ==================== */
-/* TODO: Style the navigation bar using Flexbox */
-/* Requirements:
-   - Use Flexbox for layout
-   - Logo on left, menu items on right
-   - Responsive design for mobile
-   - Include Google Santa Tracker button styling */
-
 .navbar {
-    /* TODO: Set background (use gradient or solid color) */
     background: linear-gradient(135deg, var(--christmas-red) 0%, var(--christmas-green) 100%);
-    
-    /* TODO: Add padding */
     padding: 1rem 0;
-    
-    /* TODO: Make sticky to top */
     position: sticky;
     top: 0;
     z-index: 1000;
-    
-    /* TODO: Add box-shadow for depth */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
-    /* TODO: Set max-width and center */
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
-    
-    /* TODO: Use Flexbox for layout */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -80,7 +57,6 @@ ul {
 }
 
 .logo {
-    /* TODO: Style the logo */
     color: var(--snow-white);
     font-size: 1.8rem;
     font-weight: bold;
@@ -88,7 +64,6 @@ ul {
 }
 
 .nav-menu {
-    /* TODO: Use Flexbox for horizontal menu */
     display: flex;
     gap: 2rem;
     align-items: center;
@@ -96,7 +71,6 @@ ul {
 }
 
 .nav-menu a {
-    /* TODO: Style navigation links */
     color: var(--snow-white);
     font-weight: 600;
     transition: all 0.3s ease;
@@ -105,14 +79,11 @@ ul {
 }
 
 .nav-menu a:hover {
-    /* TODO: Add hover effect */
     background-color: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
 }
 
 .santa-tracker-btn {
-    /* TODO: Style the Google Santa Tracker button */
-    /* Make it stand out with special colors */
     background-color: var(--christmas-gold);
     color: var(--christmas-red);
     padding: 0.7rem 1.5rem;
@@ -123,91 +94,58 @@ ul {
 }
 
 .santa-tracker-btn:hover {
-    /* TODO: Add hover effect for Santa Tracker button */
     transform: scale(1.05);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* ==================== HERO SECTION STYLES ==================== */
-/* TODO: Style the hero section with Christmas theme */
-/* Requirements:
-   - Full width responsive image
-   - Overlaid content (heading, text)
-   - Use relative/absolute positioning */
-
 .hero {
-    /* TODO: Set position to relative */
     position: relative;
-    
-    /* TODO: Set width to 100% */
     width: 100%;
-    
-    /* TODO: Set height */
     height: 500px;
-    
-    /* TODO: Set overflow to hidden */
     overflow: hidden;
-    
-    /* TODO: Add margin-bottom */
     margin-bottom: 3rem;
 }
 
 .hero img {
-    /* TODO: Make image fill container */
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit:cover;
     object-position: center;
 }
 
 .hero-content {
-    /* TODO: Position absolutely to overlay on image */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
-    /* TODO: Center text */
     text-align: center;
-    
-    /* TODO: Set text color */
     color: var(--snow-white);
-    
-    /* TODO: Add text-shadow for readability */
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
-    
-    /* TODO: Set z-index */
     z-index: 2;
-    
     width: 90%;
     max-width: 800px;
 }
 
 .hero-content h1 {
-    /* TODO: Style hero heading */
     font-size: 4rem;
     margin-bottom: 1rem;
     font-weight: bold;
 }
 
 .hero-content p {
-    /* TODO: Style hero description */
     font-size: 1.5rem;
     margin-bottom: 2rem;
 }
 
 /* ==================== WISHLIST SECTION ==================== */
-/* TODO: Style the wishlist section container */
-
 .wishlist-section {
-    /* TODO: Set max-width and center */
     max-width: 1400px;
     margin: 0 auto;
     padding: 3rem 20px;
 }
 
 .section-title {
-    /* TODO: Style section title */
     text-align: center;
     font-size: 3rem;
     color: var(--christmas-red);
@@ -216,67 +154,38 @@ ul {
 }
 
 /* ==================== WISHLIST GRID ==================== */
-/* TODO: Create responsive grid using CSS Grid */
-/* Requirements:
-   - 1 column on mobile
-   - 2 columns on tablet (768px+)
-   - 3 columns on desktop (1024px+) */
-
 .wishlist-grid {
-    /* TODO: Use CSS Grid */
     display: grid;
-    
-    /* TODO: Start with 1 column for mobile */
     grid-template-columns: 1fr;
-    
-    /* TODO: Add gap between cards */
     gap: 2rem;
 }
 
 /* ==================== WISHLIST CARD STYLES ==================== */
-/* TODO: Style each wishlist card */
-/* Each card should include: image, title, description, price, buttons */
-
 .wishlist-card {
-    /* TODO: Set background color */
     background-color: var(--snow-white);
-    
-    /* TODO: Add border-radius */
     border-radius: 15px;
-    
-    /* TODO: Set overflow to hidden */
     overflow: hidden;
-    
-    /* TODO: Add box-shadow */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    
-    /* TODO: Add transition for hover effect */
     transition: all 0.3s ease;
-    
-    /* TODO: Add border (optional - for Christmas theme) */
     border: 3px solid var(--christmas-gold);
 }
 
 .wishlist-card:hover {
-    /* TODO: Add hover effect */
     transform: translateY(-10px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .card-image {
-    /* TODO: Style card image */
     width: 100%;
     height: 300px;
     object-fit: cover;
 }
 
 .card-content {
-    /* TODO: Add padding to card content */
     padding: 1.5rem;
 }
 
 .card-title {
-    /* TODO: Style card title */
     color: var(--christmas-green);
     font-size: 1.8rem;
     margin-bottom: 1rem;
@@ -284,14 +193,12 @@ ul {
 }
 
 .card-description {
-    /* TODO: Style card description */
     color: var(--dark-text);
     margin-bottom: 1rem;
     line-height: 1.6;
 }
 
 .card-price {
-    /* TODO: Style price prominently */
     font-size: 2rem;
     color: var(--christmas-red);
     font-weight: bold;
@@ -299,17 +206,13 @@ ul {
 }
 
 .card-buttons {
-    /* TODO: Layout buttons side by side */
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
 }
 
 /* ==================== BUTTON STYLES ==================== */
-/* TODO: Create reusable button styles */
-
 .btn {
-    /* TODO: Style base button */
     display: inline-block;
     padding: 0.8rem 1.5rem;
     border-radius: 8px;
@@ -320,7 +223,6 @@ ul {
 }
 
 .btn-buy {
-    /* TODO: Style "Buy Now" button */
     background-color: var(--christmas-red);
     color: var(--snow-white);
     flex: 1;
@@ -328,13 +230,11 @@ ul {
 }
 
 .btn-buy:hover {
-    /* TODO: Add hover effect for Buy button */
     background-color: #A01729;
     transform: translateY(-2px);
 }
 
 .btn-learn {
-    /* TODO: Style "Learn More" button */
     background-color: var(--christmas-green);
     color: var(--snow-white);
     flex: 1;
@@ -342,76 +242,59 @@ ul {
 }
 
 .btn-learn:hover {
-    /* TODO: Add hover effect for Learn More button */
     background-color: #0F4027;
     transform: translateY(-2px);
 }
 
 /* ==================== FOOTER STYLES ==================== */
-/* TODO: Style the footer */
-
 .footer {
-    /* TODO: Set background */
     background: linear-gradient(135deg, var(--christmas-green) 0%, var(--christmas-red) 100%);
-    
-    /* TODO: Set text color */
     color: var(--snow-white);
-    
-    /* TODO: Add padding */
     padding: 2rem 0;
-    
-    /* TODO: Add margin-top */
     margin-top: 4rem;
-    
-    /* TODO: Center text */
     text-align: center;
 }
 
 .footer p {
-    /* TODO: Style footer text */
     font-size: 1rem;
 }
 
-/* ==================== MEDIA QUERIES ==================== */
-/* TODO: Add responsive breakpoints */
-
-/* ========== TABLET (768px and up) ========== */
 @media screen and (min-width: 768px) {
     
-    /* TODO: Change wishlist grid to 2 columns */
+    
     .wishlist-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     
-    /* TODO: Adjust hero heading size */
+    
     .hero-content h1 {
         font-size: 5rem;
     }
     
-    /* TODO: Adjust navigation spacing */
+    
     .nav-menu {
         gap: 2.5rem;
     }
 }
 
-/* ========== DESKTOP (1024px and up) ========== */
+
 @media screen and (min-width: 1024px) {
     
-    /* TODO: Change wishlist grid to 3 columns */
+    
     .wishlist-grid {
         grid-template-columns: repeat(3, 1fr);
     }
     
-    /* TODO: Increase hero heading size */
+    
     .hero-content h1 {
         font-size: 6rem;
     }
 }
 
-/* ========== MOBILE ADJUSTMENTS (767px and below) ========== */
+
 @media screen and (max-width: 767px) {
     
-    /* TODO: Stack navigation vertically on mobile */
+    
     .nav-container {
         flex-direction: column;
         gap: 1rem;
@@ -424,7 +307,7 @@ ul {
         text-align: center;
     }
     
-    /* TODO: Reduce hero heading size on mobile */
+    
     .hero-content h1 {
         font-size: 2.5rem;
     }
@@ -433,52 +316,8 @@ ul {
         font-size: 1.2rem;
     }
     
-    /* TODO: Reduce logo size on mobile */
+    
     .logo {
         font-size: 1.5rem;
     }
 }
-
-/* ==================== NOTES FOR STUDENTS ==================== */
-/*
-
-HELPFUL CSS TIPS:
-
-1. FLEXBOX QUICK REFERENCE:
-   display: flex;              - Creates flex container
-   flex-direction: row;        - Arranges items horizontally
-   justify-content: center;    - Centers items horizontally
-   align-items: center;        - Centers items vertically
-   gap: 20px;                  - Space between items
-
-2. CSS GRID QUICK REFERENCE:
-   display: grid;                          - Creates grid container
-   grid-template-columns: 1fr 1fr 1fr;     - 3 equal columns
-   grid-template-columns: repeat(3, 1fr);  - Same as above
-   gap: 20px;                              - Space between grid items
-
-3. RESPONSIVE DESIGN:
-   - Start with mobile styles (default)
-   - Add tablet styles at 768px
-   - Add desktop styles at 1024px
-   - Test by resizing browser window
-
-4. CHRISTMAS COLOR SCHEME:
-   Red: #C41E3A (Primary)
-   Green: #165B33 (Secondary)
-   Gold: #FFD700 (Accent)
-   White: #FFFFFF (Text/Background)
-   
-   Alternative schemes:
-   - Traditional: Red (#C41E3A), Green (#165B33), Gold (#FFD700)
-   - Modern: Navy (#1A1F3A), Silver (#C0C0C0), Ice Blue (#E3F2FD)
-   - Rustic: Brown (#8B4513), Cream (#FFFDD0), Forest Green (#228B22)
-
-5. TESTING YOUR WORK:
-   - Check navigation responsiveness
-   - Test grid layout at different screen sizes
-   - Verify all hover effects work
-   - Test buttons and links
-   - Check that images scale properly
-
-*/
