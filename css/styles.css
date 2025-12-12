@@ -265,13 +265,72 @@ ul {
 .footer {
     background: linear-gradient(135deg, var(--christmas-green) 0%, var(--christmas-red) 100%);
     color: var(--snow-white);
-    padding: 2rem 0;
+    padding: 3rem 0;
     margin-top: 4rem;
-    text-align: center;
 }
 
-.footer p {
-    font-size: 1rem;
+.footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.footer-section h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--snow-white);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.footer-section p,
+.footer-section li {
+    color: rgba(255,255,255,0.95);
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.footer-section ul {
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li a {
+    color: rgba(255,255,255,0.95);
+    transition: color 150ms ease;
+}
+
+.footer-section ul li a:hover {
+    color: var(--christmas-gold);
+    text-decoration: underline;
+}
+
+.footer .muted {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9rem;
+    margin-top: 0.75rem;
+}
+
+@media screen and (min-width: 768px) {
+    .footer-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .footer {
+        padding: 4rem 0;
+    }
+
+    .footer {
+        text-align: left;
+    }
 }
 
 @media screen and (min-width: 768px) {
