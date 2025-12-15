@@ -12,12 +12,59 @@
         (function(){
             const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><rect fill="#eee" width="100%" height="100%"/><text x="50%" y="50%" font-size="24" text-anchor="middle" fill="#999" dy=".3em">Image unavailable</text></svg>';
             const placeholder = 'data:image/svg+xml;utf8,'+encodeURIComponent(svg);
-            document.addEventListener('DOMContentLoaded', function(){
+
+            function normalizeImages(){
                 document.querySelectorAll('img').forEach(function(img){
                     var s = img.getAttribute('src');
                     if(s && s.startsWith('/')) img.setAttribute('src', s.slice(1));
                     img.addEventListener('error', function(){ if(img.src !== placeholder) img.src = placeholder; });
                 });
+            }
+
+            function createBgVideo(){
+                if(document.getElementById('bg-video-wrap')) return;
+                const wrap = document.createElement('div');
+                wrap.id = 'bg-video-wrap';
+                wrap.className = 'bg-video-wrap';
+                const video = document.createElement('video');
+                video.id = 'bg-video';
+                video.autoplay = true;
+                video.loop = true;
+                video.muted = true;
+                video.playsInline = true;
+                video.preload = 'auto';
+                video.setAttribute('aria-hidden','true');
+                const source = document.createElement('source');
+                source.src = 'images/deltarune-fountain.960x540.mp4';
+                source.type = 'video/mp4';
+                video.appendChild(source);
+                wrap.appendChild(video);
+                document.body.appendChild(wrap);
+                video.play().catch(()=>{});
+            }
+
+            document.addEventListener('DOMContentLoaded', function(){
+                normalizeImages();
+                createBgVideo();
+
+                const path = location.pathname;
+                const isIndex = path.endsWith('index.html') || path.endsWith('/') || (document.querySelector('.hero') !== null && path.indexOf('item') === -1);
+
+                if(isIndex){
+                    const hero = document.querySelector('.hero');
+                    function check(){
+                        if(window.scrollY > (hero ? hero.offsetHeight : 300)){
+                            document.body.classList.add('bg-visible');
+                        } else {
+                            document.body.classList.remove('bg-visible');
+                        }
+                    }
+                    check();
+                    window.addEventListener('scroll', check);
+                    window.addEventListener('resize', check);
+                } else {
+                    document.body.classList.add('bg-visible');
+                }
             });
         })();
         </script>
@@ -37,7 +84,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#wishlist"> Wishlist </a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="https://santatracker.google.com" target="_blank" class="santa-tracker-btn">Locate Big Nick</a></li>
+                <li><a href="https://santatracker.google.com" target="_blank" class="santa-tracker-btn">Where Is Santa?</a></li>
             </ul>
         </div>
     </nav>
@@ -48,7 +95,7 @@
     
     <section class="hero" id="home">
         <!-- TODO: Add your hero image -->
-        <img src="/images/Curren_Christmas.png" alt="Curren Christmas Themed Image" class="hero-image">
+        <img src="images/Curren_Christmas.png" alt="Curren Christmas Themed Image" class="hero-image">
         
         <div class="hero-content">
             <!-- TODO: Add your hero heading -->
@@ -72,7 +119,7 @@
             
             <div class="wishlist-card">
                 <!-- TODO: Add product image -->
-                <img src="/images/gaming_pc.jpg" class="card-image" alt=" A gaming PC setup">
+                <img src="images/gaming_pc.jpg" class="card-image" alt=" A gaming PC setup">
                 
                 <div class="card-content">
                     <!-- TODO: Add product title -->
@@ -98,7 +145,7 @@
 
             <!-- ==================== CARD 2 ==================== -->
             <div class="wishlist-card">
-                <img src="/images/steam deck.png" class="card-image" alt="a Steam Deck handheld gaming console">
+                <img src="images/steam deck.png" class="card-image" alt="a Steam Deck handheld gaming console">
                 <div class="card-content">
                     <h3 class="card-title">Steam Deck</h3>
                     <p class="card-description">Unnecessary if I obtain the PC.
@@ -114,7 +161,7 @@
 
             <!-- ==================== CARD 3 ==================== -->
             <div class="wishlist-card">
-                <img src="/images/Nintendo_Switch_2.jpg" class="card-image" alt="A Nintendo Switch 2 console">
+                <img src="images/Nintendo_Switch_2.jpg" class="card-image" alt="A Nintendo Switch 2 console">
                 <div class="card-content">
                     <h3 class="card-title">Nintendo Switch 2</h3>
                     <p class="card-description">While I said Nintendo isn't good, my current Switch has a screen that does not work in handheld mode, so I require a new one.</p>
@@ -128,7 +175,7 @@
 
             <!-- ==================== CARD 4 ==================== -->
             <div class="wishlist-card">
-                <img src="/images/subnautica below zero.avif" class="card-image" alt="Subnautica Below Zero game cover art">
+                <img src="images/subnautica below zero.avif" class="card-image" alt="Subnautica Below Zero game cover art">
                 <div class="card-content">
                     <h3 class="card-title">Subnautica: Below Zero</h3>
                     <p class="card-description">This is a sequal to the game Subnautica that I am currently playing.</p>
@@ -142,13 +189,13 @@
 
             <!-- ==================== CARD 5 ==================== -->
             <div class="wishlist-card">
-                <img src="" class="card-image" alt="">
+                <img src="images/earbuds.jpg" class="card-image" alt="Comfortable sleep earbuds">
                 <div class="card-content">
-                    <h3 class="card-title"></h3>
-                    <p class="card-description"></p>
-                    <div class="card-price"></div>
+                    <h3 class="card-title">Sleep Earbuds</h3>
+                    <p class="card-description">Low-profile wireless earbuds designed to stay comfortable while you sleep — soft tips, long battery life, and gentle ambient modes for relaxation.</p>
+                    <div class="card-price">$39.99</div>
                     <div class="card-buttons">
-                        <a href="" target="_blank" class="btn btn-buy"></a>
+                        <a href="https://www.amazon.com/DAGKHE-Headphones-Invisible-Earphones-Bluetooth/dp/B0G51FJ7DH" target="_blank" class="btn btn-buy">Store Page</a>
                         <a href="item5.html" class="btn btn-learn">More Info</a>
                     </div>
                 </div>
@@ -156,19 +203,20 @@
 
             <!-- ==================== CARD 6 ==================== -->
             <div class="wishlist-card">
-                <img src="" class="card-image" alt="">
+                <img src="images/Pokemon.jpg" class="card-image" alt="Pokemon Legends: Arceus cover art">
                 <div class="card-content">
-                    <h3 class="card-title"></h3>
-                    <p class="card-description"></p>
-                    <div class="card-price"></div>
+                    <h3 class="card-title">Pokémon Legends: Arceus</h3>
+                    <p class="card-description">A reimagined open-world Pokémon adventure set in the ancient Hisui region — exploration-driven gameplay with new catching and combat mechanics.</p>
+                    <div class="card-price">$49.99</div>
                     <div class="card-buttons">
-                        <a href="" target="_blank" class="btn btn-buy"></a>
+                        <a href="https://www.amazon.com/Pokemon-Legends-Arceus-Nintendo-Switch/dp/B0914YGQSH" target="_blank" class="btn btn-buy">Store Page</a>
                         <a href="item6.html" class="btn btn-learn">More Info</a>
                     </div>
                 </div>
             </div>
 
             <!-- ==================== CARD 7 ==================== -->
+            <!--
             <div class="wishlist-card">
                 <img src="" class="card-image" alt="">
                 <div class="card-content">
@@ -181,8 +229,9 @@
                     </div>
                 </div>
             </div>
+            -->
 
-            <!-- ==================== CARD 8 ==================== -->
+            <!-- ==================== CARD 8 ==================== 
             <div class="wishlist-card">
                 <img src="" class="card-image" alt="">
                 <div class="card-content">
@@ -194,9 +243,10 @@
                         <a href="item8.html" class="btn btn-learn">More Info</a>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- ==================== CARD 9 ==================== -->
+            <!--
             <div class="wishlist-card">
                 <img src="" class="card-image" alt="">
                 <div class="card-content">
@@ -209,6 +259,7 @@
                     </div>
                 </div>
             </div>
+            -->
 
         </div>
     </section>

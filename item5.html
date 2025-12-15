@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Wishlist Item 5 — Details</title>
+    <title>Sleep Earbuds — Details</title>
         <link rel="stylesheet" href="css/styles.css">
         <link rel="icon" href="images/IMG_2798.jpg" type="image/jpeg">
         <link rel="shortcut icon" href="images/IMG_2798.jpg">
@@ -11,12 +11,41 @@
         (function(){
             const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><rect fill="#eee" width="100%" height="100%"/><text x="50%" y="50%" font-size="24" text-anchor="middle" fill="#999" dy=".3em">Image unavailable</text></svg>';
             const placeholder = 'data:image/svg+xml;utf8,'+encodeURIComponent(svg);
-            document.addEventListener('DOMContentLoaded', function(){
+
+            function normalizeImages(){
                 document.querySelectorAll('img').forEach(function(img){
                     var s = img.getAttribute('src');
                     if(s && s.startsWith('/')) img.setAttribute('src', s.slice(1));
                     img.addEventListener('error', function(){ if(img.src !== placeholder) img.src = placeholder; });
                 });
+            }
+
+            function createBgVideo(){
+                if(document.getElementById('bg-video-wrap')) return;
+                const wrap = document.createElement('div');
+                wrap.id = 'bg-video-wrap';
+                wrap.className = 'bg-video-wrap';
+                const video = document.createElement('video');
+                video.id = 'bg-video';
+                video.autoplay = true;
+                video.loop = true;
+                video.muted = true;
+                video.playsInline = true;
+                video.preload = 'auto';
+                video.setAttribute('aria-hidden','true');
+                const source = document.createElement('source');
+                source.src = 'images/deltarune-fountain.960x540.mp4';
+                source.type = 'video/mp4';
+                video.appendChild(source);
+                wrap.appendChild(video);
+                document.body.appendChild(wrap);
+                video.play().catch(()=>{});
+            }
+
+            document.addEventListener('DOMContentLoaded', function(){
+                normalizeImages();
+                createBgVideo();
+                document.body.classList.add('bg-visible');
             });
         })();
         </script>
@@ -36,19 +65,25 @@
 
     <main class="item-detail">
         <a class="back-link" href="index.html">← Back to Wishlist</a>
-        <h1>Wishlist Item 5</h1>
-        <p>Placeholder entry — use this page to describe the item, add an image, price, and where to buy.</p>
+        <h1>Sleep Earbuds — Comfortable Wireless Earbuds</h1>
+        <img src="images/earbuds.jpg" alt="Sleep earbuds" class="detail-image">
+        <p>Low-profile wireless earbuds built for sleep: soft tips that stay put, low-volume ambient sounds, and a compact charging case for all-night comfort.</p>
 
-        <h2>Suggested Sections</h2>
+        <h2>Key Features</h2>
         <ul>
-            <li>Short description</li>
-            <li>Key features or specs</li>
-            <li>Estimated price and store link</li>
-            <li>Priority / notes</li>
+            <li>Ultra low-profile design for comfortable side-sleeping</li>
+            <li>Bluetooth 5.2, stable connection</li>
+            <li>Up to 12 hours total battery with charging case</li>
+            <li>IPX4 splash resistance and soft silicone tips</li>
+            <li>Sleep and ambient sound modes</li>
         </ul>
 
+        <h2>Price & Where to Buy</h2>
+        <p class="card-price">$39.99</p>
+        <a class="btn btn-buy" href="https://www.amazon.com/DAGKHE-Headphones-Invisible-Earphones-Bluetooth/dp/B0G51FJ7DH" target="_blank">Store Page</a>
+
         <h2>Priority</h2>
-        <p>Unspecified — fill in details to set priority.</p>
+        <p>Medium — daily comfort and improved sleep make these a useful upgrade.</p>
     </main>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Wishlist Item 6 — Details</title>
+    <title>Pokémon Legends: Arceus — Details</title>
         <link rel="stylesheet" href="css/styles.css">
         <link rel="icon" href="images/IMG_2798.jpg" type="image/jpeg">
         <link rel="shortcut icon" href="images/IMG_2798.jpg">
@@ -11,12 +11,41 @@
         (function(){
             const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><rect fill="#eee" width="100%" height="100%"/><text x="50%" y="50%" font-size="24" text-anchor="middle" fill="#999" dy=".3em">Image unavailable</text></svg>';
             const placeholder = 'data:image/svg+xml;utf8,'+encodeURIComponent(svg);
-            document.addEventListener('DOMContentLoaded', function(){
+
+            function normalizeImages(){
                 document.querySelectorAll('img').forEach(function(img){
                     var s = img.getAttribute('src');
                     if(s && s.startsWith('/')) img.setAttribute('src', s.slice(1));
                     img.addEventListener('error', function(){ if(img.src !== placeholder) img.src = placeholder; });
                 });
+            }
+
+            function createBgVideo(){
+                if(document.getElementById('bg-video-wrap')) return;
+                const wrap = document.createElement('div');
+                wrap.id = 'bg-video-wrap';
+                wrap.className = 'bg-video-wrap';
+                const video = document.createElement('video');
+                video.id = 'bg-video';
+                video.autoplay = true;
+                video.loop = true;
+                video.muted = true;
+                video.playsInline = true;
+                video.preload = 'auto';
+                video.setAttribute('aria-hidden','true');
+                const source = document.createElement('source');
+                source.src = 'images/deltarune-fountain.960x540.mp4';
+                source.type = 'video/mp4';
+                video.appendChild(source);
+                wrap.appendChild(video);
+                document.body.appendChild(wrap);
+                video.play().catch(()=>{});
+            }
+
+            document.addEventListener('DOMContentLoaded', function(){
+                normalizeImages();
+                createBgVideo();
+                document.body.classList.add('bg-visible');
             });
         })();
         </script>
@@ -36,18 +65,24 @@
 
     <main class="item-detail">
         <a class="back-link" href="index.html">← Back to Wishlist</a>
-        <h1>Wishlist Item 6</h1>
-        <p>Placeholder entry — describe the item here with image, price, and purchase link when ready.</p>
+        <h1>Pokémon Legends: Arceus — Action RPG (Nintendo Switch)</h1>
+        <img src="images/Pokemon.jpg" alt="Pokémon Legends: Arceus" class="detail-image">
+        <p>A fresh take on the Pokémon formula, set in the Hisui region. Explore vast environments, complete research tasks, and experience a story-driven single-player adventure.</p>
 
-        <h2>Example Details</h2>
+        <h2>Key Features</h2>
         <ul>
-            <li><strong>Price:</strong> $—</li>
-            <li><strong>Use case:</strong> e.g., gaming / productivity / hobby</li>
-            <li><strong>Notes:</strong> any special requirements</li>
+            <li>Open-world exploration and dynamic encounters</li>
+            <li>Reworked catching and combat systems</li>
+            <li>Story-driven missions and side-quests</li>
+            <li>Nintendo Switch exclusive</li>
         </ul>
 
+        <h2>Price & Where to Buy</h2>
+        <p class="card-price">$49.99</p>
+        <a class="btn btn-buy" href="https://www.amazon.com/Pokemon-Legends-Arceus-Nintendo-Switch/dp/B0914YGQSH" target="_blank">Store Page</a>
+
         <h2>Priority</h2>
-        <p>Unspecified — you can mark this as low/medium/high when known.</p>
+        <p>Medium — great for replayable exploration and single-player fun.</p>
     </main>
 </body>
 </html>
